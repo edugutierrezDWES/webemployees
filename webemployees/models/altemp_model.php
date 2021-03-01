@@ -104,7 +104,7 @@ function altaEmpleado($nombre,$apellidos,$nacimiento,$cargo,$salario,$genero,$dp
 
     # Función 'insertarProducto'. 
 # Parámetros: 
-# 	- $nombre (nombre del empleado=
+# 	- $nombre (nombre del empleado)
 # 	- $apellidos (apellidos del emeplado)
 # 	- $nacimiento (fecha de nacimiento)
 # 	- $cargo (cargo que se le da de alta en la tabla titles)

@@ -20,7 +20,6 @@ function comprobarDepartamento() {
             $consulta->bindParam(":fecha_hasta", $fecha_hasta);
             $consulta->execute();
 
-
             $datos=$consulta->fetch(PDO::FETCH_ASSOC);
             return $datos["deptEmpleado"]=="d003"? true : false;
 
@@ -30,7 +29,7 @@ function comprobarDepartamento() {
         }
     }
 
-function comprobarEmpleados($numemp,$clave){
+function iniciarSesion($numero,$clave){
 
      # Función 'comprobarEmpleados'. 
     # Parámetros: 
@@ -47,7 +46,7 @@ function comprobarEmpleados($numemp,$clave){
     
     try {
         $consulta = $conexion->prepare("SELECT first_name,employees.emp_no,dept_no FROM employees LEFT JOIN dept_emp ON employees.emp_no=dept_emp.emp_no WHERE employees.emp_no=:numemp AND last_name=:clave AND to_date=:fecha_hasta");
-        $consulta->bindParam(":numemp", $numemp);
+        $consulta->bindParam(":numemp", $numero);
         $consulta->bindParam(":clave", $clave);
         $consulta->bindParam(":fecha_hasta", $fecha_hasta);
         $consulta->execute();
