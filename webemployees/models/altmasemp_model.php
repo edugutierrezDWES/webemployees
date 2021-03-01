@@ -1,7 +1,7 @@
 <?php
 
 include_once('altemp_model.php');
-function imprimirCesta()
+/* function imprimirCesta()
 {
 
     # Función 'mostrarEmpleado'.
@@ -35,7 +35,7 @@ function imprimirCesta()
           </tr>';
     }
     echo '</table>';
-}
+} */
 
 function altaMasivaEmpleados(){
 

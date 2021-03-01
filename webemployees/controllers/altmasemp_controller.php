@@ -36,10 +36,10 @@
             $annadir["nuevoNum"]=$_SESSION["nuevoNum"];
             
             array_push($_SESSION["cesta"],$annadir);
-            imprimirCesta();
+            require_once("views/cesta_view.php");
             } else {
                 echo"<script>alert('Faltan rellenar campos')</script>";
-                imprimirCesta();
+                require_once("views/cesta_view.php");
             } 
 
          } else if(isset($_POST["limpiar"])){
@@ -51,8 +51,7 @@
 
             $bool=altaMasivaEmpleados();
             if($bool){
-                echo "<p style='color:grey;'>Operación realizada con éxito</p>";
-                imprimirCesta();
+                require_once("views/cesta_view.php");
                 $_SESSION["cesta"]=array();
                 $_SESSION["nuevoNum"]=null;
             } else echo "<p style='color:red;'>Error en la operación</p>";

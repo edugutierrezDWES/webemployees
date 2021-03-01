@@ -48,7 +48,5 @@
 		<input type="submit" value="Alta Empleado"/><br><br>
         <a href="index.php">Volver al Inicio</a>
 	</form>
-
-    
 </body>
 </html>

@@ -169,7 +169,7 @@ function altaEmpleadoTablas($valor,$nuevoNum,$tabla,$campo){
 #
 	global $conexion;
     $fecha_desde=date("Y-m-d");
-    $fecha_hasta=date("Y-m-d",strtotime(date("Y-m-d")."+ 1 year"));
+    $fecha_hasta=date("9999-01-01");
 
 	try {
 		$conexion->beginTransaction();

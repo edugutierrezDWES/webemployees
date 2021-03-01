@@ -13,10 +13,9 @@ if(isset($_SESSION) && !empty($_SESSION) && isset($_SESSION["numemp"])) {
 
 		$usuario = $_POST["numemp"];
 		$clave = $_POST["clave"];
-
 		$consulta = comprobarEmpleados($usuario, $clave);
 
-		if($consulta != null){
+		if($consulta != null && $consulta!=false){
 			$_SESSION["nombre"] = $consulta["first_name"];
             $_SESSION["numemp"] = $consulta["emp_no"];
 			header("location: index.php"); 
