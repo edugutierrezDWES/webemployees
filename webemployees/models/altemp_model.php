@@ -192,4 +192,40 @@ function altaEmpleadoTablas($valor,$nuevoNum,$tabla,$campo){
 	}
 }
 
+function infoDepartamentos($dept_num){
+
+    # Función 'infoDepartamentos'. 
+   # Parámetros: 
+   # 	- $dept_num (númerpo del empleado)
+   #
+   # Funcionalidad:
+   # 
+   #
+   # Retorna: true/false o null
+   #
+
+   global $conexion;
+   $datos=array();
+
+   try{
+       $consulta=$conexion->prepare("SELECT dept_emp.emp_no as numemp, dept_emp.from_date as fecha_desde, dept_emp.to_date as fecha_hasta, first_name, last_name FROM dept_emp LEFT JOIN employees ON dept_emp.emp_no=employees.emp_no WHERE dept_no=:dept_num LIMIT 25");
+       $consulta->bindParam(":dept_num",$dept_num);
+       $consulta->execute();
+       $datos["dept_emp"]=$consulta->fetchAll(PDO::FETCH_ASSOC);
+
+       $consulta=$conexion->prepare("SELECT dept_manager.emp_no as numemp, dept_manager.from_date as fecha_desde, dept_manager.to_date as fecha_hasta, first_name, last_name FROM dept_manager LEFT JOIN employees ON dept_manager.emp_no=employees.emp_no WHERE dept_no=:dept_num");
+       $consulta->bindParam(":dept_num",$dept_num);
+       $consulta->execute();
+       $datos["dept_manager"]=$consulta->fetchAll(PDO::FETCH_ASSOC);
+       return $datos; 
+      
+
+   } catch(PDOException $ex){
+       echo "<p>Ha ocurrido un error al devolver los datos: <span style='color: red; font-weight: bold;'>". $ex->getMessage()."</span></p></br>";
+       return null;
+   }
+
+
+  }
+
 ?>
