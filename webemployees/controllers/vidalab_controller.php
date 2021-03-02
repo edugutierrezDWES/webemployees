@@ -8,12 +8,20 @@ if (isset($_POST) && !empty($_POST) && isset($_POST["vidalaboral"])) {
 
     $numEmp=$_POST["numEmp"];
     $bool=comprobarEmpleado($numEmp);
-    var_dump($bool);
-      if($bool){
+    if($bool){
 
       $datos=vidaLaboral($numEmp);
-     /*  if($bool2) echo "<p style='color:green;'>Operación realizada con éxito</p>";
-      else echo "<p style='color:red;'>Ha ocurrido un error al actualizar el salario</p>";  */
+      if($datos!=null){
+
+        $employees=$datos["employees"];
+        $salaries=$datos["salaries"];
+        $titles=$datos["titles"];
+        $dept_emp=$datos["dept_emp"];
+        $dept_manager=$datos["dept_manager"];
+
+          require("views/vidalab_tablas_view.php"); 
+
+      } 
 
     } else echo "<p style='color:red;'>No se ha encontrado este empleado. Compruebe el número</p>"; 
 }
